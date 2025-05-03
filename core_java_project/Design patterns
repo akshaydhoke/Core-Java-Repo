@@ -1,5 +1,8 @@
 Creational Patterns >>
 
+Purpose: Deal with object creation mechanisms, trying to create objects in a manner suitable to the situation.
+Key Idea: Instead of creating objects directly with new, creational patterns provide more flexible and reusable ways to instantiate classes.
+
 Singleton: Ensures a class has only one instance and provides a global point of access to it.
 Prototype: Creates new objects by copying an existing object, known as the prototype.
 Builder: Separates the construction of a complex object from its representation so that the same construction process can create different representations.
@@ -218,6 +221,8 @@ public class FactoryPatternDemo {
 
 ===============================================================================
 Structural Patterns:
+Purpose>> Concerned with how classes and objects are composed to form larger structures.
+Key Idea>> Help ensure that if one part of a system changes, the entire structure doesn't have to change.
 
 Adapter (or Wrapper): Allows an interface of an existing class to be used as another interface. It enables classes to work together that couldn't otherwise because of incompatible interfaces.
 Bridge: Decouples an abstraction from its implementation so that the two can vary independently.
@@ -380,6 +385,8 @@ Displaying photo2.jpg
 
 ===============================================================================
 Behavioral Patterns:
+Purpose>> Focus on how objects communicate with each other and assign responsibility.
+Key Idea>> Define patterns of communication between objects in a way that increases flexibility.
 
 Observer: Defines a dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 Command: Encapsulates a request as an object, thereby allowing for parameterization of clients with queues, requests, and operations.
