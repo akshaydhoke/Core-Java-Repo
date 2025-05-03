@@ -1,7 +1,7 @@
 Intermediate Operations
 
 filter(): Returns a stream consisting of elements that match the given predicate.
-map(): Returns a stream consisting of the results of applying a function to the elements.
+map(): Returns a stream consisting of the results of applying a function to the elements./used for transformation
 flatMap(): Returns a stream consisting of the results of replacing each element with the contents of a mapped stream.
 distinct(): Returns a stream consisting of distinct elements.
 sorted(): Returns a stream consisting of the elements sorted according to their natural order or a specified comparator.
@@ -251,7 +251,11 @@ Output: false
       Map<String,Long> namesCount = names
                                    .stream()
                        .filter(x->Collections.frequency(names, x)>1)
-                       .collect(Collectors.groupingB		List<Integer> listOfIntegers = new ArrayList<Integer>(Arrays.asList(31, 56, 15, 12, 75, 31, 89));
+                       .collect(Collectors.groupingBy
+                       (Function.identity(), Collectors.counting()));
+      System.out.println(namesCount);
+      
+      List<Integer> listOfIntegers = new ArrayList<Integer>(Arrays.asList(31, 56, 15, 12, 75, 31, 89));
 
 		// Using Stream API without sorted() method
 		List<Integer> sortedList = new ArrayList<>();
@@ -259,9 +263,7 @@ Output: false
 			Integer min = listOfIntegers.stream().min(Integer::compareTo).get();
 			sortedList.add(min);
 			listOfIntegers.remove(min);
-		}y
-                       (Function.identity(), Collectors.counting()));
-      System.out.println(namesCount);
+		}
       
 ===================================
 10) How to check if list is empty in Java 8 using Optional, if not null iterate through the list and print the object?
@@ -436,8 +438,30 @@ Reverse a String Without Using StringBuilder or StringBuffer
         System.out.println(new String(chars));
 
 ===================================
+		int[] ints = { 1, 2, 3, 4, 5 };	
+		
+		int sum = Arrays.stream(ints).reduce(1, (a,b)-> a*b);
+		System.out.println(sum); // 120
+===================================
+Yes, in Java, a stream can be reused, but only if it's a type of stream that supports it (like List, Set, etc.).
+Most streams, especially those created by methods like Files.lines() or Stream.of(), are one-time-use.
+Once a terminal operation is invoked (like forEach(), collect(), etc.), the stream is consumed and cannot be reused.
+  
+List<String> data = List.of("apple", "banana", "cherry");
 
+// Create a Supplier that generates the stream
+Supplier<Stream<String>> streamSupplier = () -> data.stream();
 
+// Use the stream multiple times
+streamSupplier.get().forEach(System.out::println);
+streamSupplier.get().filter(s -> s.startsWith("b")).forEach(System.out::println);  
+  
+--------------------------------------------
+data.stream()
+    .peek(s -> System.out.println("Inspecting: " + s))
+    .forEach(System.out::println);
+
+===================================
 
 
                
